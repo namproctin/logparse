@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/opt/app
+    environment:
+      - DATABASE_URL=postgres://logparse@postgres:5432/logparse
+      - FLASK_APP=main.py
+    ports: ["5000:5000"]
+    stdin_open: true
+    tty: true
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:10
+    environment:
+      - POSTGRES_USER=logparse
+      - POSTGRES_DB=logparse

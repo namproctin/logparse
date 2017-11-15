@@ -1,0 +1,6 @@
+flask
+flask_sqlalchemy
+dodotable
+maxminddb
+psycopg2
+gunicorn
